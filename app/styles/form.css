@@ -1,0 +1,118 @@
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Hiragino Sans", "Segoe UI", sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.foods-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.food-item {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.food-item h3 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.intake-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.rice-section {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed #ccc;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.nav button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  display: block;
+  margin: 24px auto 0;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background: #218838;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.progress-container {
+  position: relative;
+  width: 50%;
+  height: 14px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  border-radius: 8px;
+  transition: width 0.4s ease-in-out;
+}
+
+.progress-text {
+  display: block;
+  text-align: right;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #333;
+}

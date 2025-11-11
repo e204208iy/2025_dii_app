@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 12月13日 DIIアプリ
+| 層           | 使用技術                                               |
+| ----------- | -------------------------------------------------- |
+| **フロントエンド** | Next.js 15 (App Router, React Server Components対応) |
+| **フォーム** | react hook form                                         |
+| **DB**      | MongoDB Atlas（無料枠あり）                               |
+| **ORM/ODM** | Mongoose または Prisma（MongoDB対応モード）                  |
+| **デプロイ**    | Vercel（環境変数にMongoDB URIを登録）                        |
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+app/
+├─ survey/
+│  ├─ page.tsx                 ← foods_data1.json
+│  ├─ page2/page.tsx           ← foods_data2.json
+│  ├─ page3/page.tsx
+│  ├─ page4/page.tsx
+│  ├─ page5/page.tsx
+│  ├─ rice/page.tsx            ← 最後に送信
+│  ├─ components/
+│  │   ├─ GenerateForm.tsx     ← 回答フォーム
+│  │   └─ loadData.ts
+│  └─ SurveyContext.tsx        ← 回答保持コンテキスト
+└─ api/
+   └─ survey/route.ts

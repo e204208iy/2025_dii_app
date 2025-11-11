@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,6 +22,7 @@ export default function Home() {
             <circle r="28" fill="red" />
             <rect x="-2" y="-34" width="4" height="10" rx="1.5" fill="#2f7a28"/>
           </g>
+          1
 
           <g transform="translate(310,240)" filter="url(#drop)">
             <circle r="26" fill="#ffa94d" />
@@ -52,7 +53,12 @@ export default function Home() {
           <h1>DIIアプリ</h1>
           <p className="catchphrase">あなたの健康をサポートするアプリです</p>
           <h3>久留米工業大学　作</h3>
-          <button className="start-btn">スタート</button>
+          <Link
+            href="/survey"
+            className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
+          >
+            アンケートを開始する
+          </Link>
         </div>
   </div>
   );
