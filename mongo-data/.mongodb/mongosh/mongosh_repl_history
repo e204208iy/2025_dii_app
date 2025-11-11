@@ -1,2 +1,0 @@
-db.surveys.find().pretty()
-use dii_app
