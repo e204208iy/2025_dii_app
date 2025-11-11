@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import './styles/survey.css'
 
 export default function SurveyStartPage() {
   const router = useRouter();

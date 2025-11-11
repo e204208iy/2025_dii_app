@@ -21,8 +21,8 @@ export default function StepForm() {
     step === "4" ? foodsData.foodsFour : foodsData.foodsFive;
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-semibold mb-4">ページ {step}</h2>
+    <div className="p-4">
+      <h2 className="text-xl font-semibold mb-2">ページ {step}</h2>
       {currentFoods.map((food: any, index: number) => (
         <FoodQuestion key={index} food={food} index={index} />
       ))}

@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 5px;
+  font-family: Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background-image: url('/img/bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: brightness(1.25); /* ← ここで明るさを調整 */
+    z-index: -1;
+}
+
+.form-title {
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+}

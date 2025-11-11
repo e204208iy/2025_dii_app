@@ -1,12 +1,13 @@
-## 12月13日 DIIアプリ
+## DIIアプリ
 | 層           | 使用技術                                               |
 | ----------- | -------------------------------------------------- |
-| **フロントエンド** | Next.js 15 (App Router, React Server Components対応) |
+| **フロントエンド** | Next.js 16 |
 | **フォーム** | react hook form                                         |
 | **DB**      | MongoDB Atlas（無料枠あり）                               |
-| **ORM/ODM** | Mongoose または Prisma（MongoDB対応モード）                  |
+| **ORM/ODM** | Mongoose                   |
 | **デプロイ**    | Vercel（環境変数にMongoDB URIを登録）                        |
 
+```
 project-root/
 ├── app/
 │   ├── api/
@@ -48,3 +49,4 @@ project-root/
 ├── tsconfig.json
 └── next.config.mjs                     # ← （Next.js設定ファイル）
 
+```

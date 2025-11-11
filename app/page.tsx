@@ -8,11 +8,11 @@ export default function Home() {
         <svg viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#f6fff6"/>
-              <stop offset="100%" stop-color="#fffaf2"/>
+              <stop offset="0%" stopColor="#f6fff6"/>
+              <stop offset="100%" stopColor="#fffaf2"/>
             </linearGradient>
             <filter id="drop" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.1"/>
+              <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#000" floodOpacity="0.1"/>
             </filter>
           </defs>
 

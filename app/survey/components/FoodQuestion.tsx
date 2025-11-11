@@ -2,6 +2,7 @@
 
 import { Controller, useFormContext } from "react-hook-form";
 import RiceOptions from "./RiceOptions";
+import '../styles/survey.css'
 
 const frequencies = [
   { value: "daily", label: "毎日" },
@@ -13,20 +14,21 @@ const frequencies = [
 ];
 
 export default function FoodQuestion({ food, index }: any) {
-  const { control, watch } = useFormContext();
+  const { control, watch, formState: { errors } } = useFormContext();
   const frequencyName = `foods.${food.食品}.frequency`;
   const intakeName = `foods.${food.食品}.intake`;
   const selected = watch(frequencyName);
 
   return (
-    <div className="border-b pb-4 mb-4">
-      <h3 className="font-medium">{food.食品}</h3>
-      <div className="flex flex-wrap gap-2 mt-2">
+    <div className="border-b pb-4 mb-4 border-stone-300">
+      <h2 className="form-title">{food.食品}</h2>
+      <div className="flex flex-wrap gap-5 mt-2 text-lg">
         {frequencies.map((freq) => (
           <label key={freq.value} className="mr-3">
             <Controller
               name={frequencyName}
               control={control}
+              rules={{ required: `${food.食品} を選択してください` }} // ✅ 必須指定！
               render={({ field }) => (
                 <input
                   {...field}
@@ -40,6 +42,12 @@ export default function FoodQuestion({ food, index }: any) {
           </label>
         ))}
       </div>
+            {/* 各質問の下にも個別エラー */}
+      {errors[food.食品] && (
+        <p className="text-red-500 text-sm mt-1">
+          {errors[food.食品]?.message as string}
+        </p>
+      )}
 
       {selected !== "none" && selected && (
         <div className="mt-3">
