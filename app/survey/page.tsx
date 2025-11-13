@@ -11,9 +11,9 @@ export default function SurveyStartPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold mb-4">DIIアンケート</h1>
+        <h1 className="text-2xl font-bold mb-4">DIIに関するアンケート</h1>
         <p className="text-gray-600 mb-6">
           このアンケートは、日常の食事内容をもとにDII（食事性炎症指数）を推定します。<br />
           全70項目を5ページに分けてご回答ください。

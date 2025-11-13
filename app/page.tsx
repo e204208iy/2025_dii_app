@@ -52,13 +52,13 @@ export default function Home() {
         <div className="content">
           <h1>DIIアプリ</h1>
           <p className="catchphrase">あなたの健康をサポートするアプリです</p>
-          <h3>久留米工業大学　作</h3>
           <Link
             href="/survey"
             className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
           >
-            アンケートを開始する
+            スタート
           </Link>
+          {/* <h3>Created by Kurume Institute of Technology</h3> */}
         </div>
   </div>
   );
