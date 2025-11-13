@@ -1,31 +1,22 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { User } from "next-auth";
 
-const isAuthEnabled = process.env.NEXT_PUBLIC_ENABLE_AUTH === "true";
-
-const handler = NextAuth({
-  providers: isAuthEnabled
-    ? [
+export const authOptions = {
+    providers: [
         GoogleProvider({
-          clientId: process.env.GOOGLE_CLIENT_ID!,
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+        clientId: process.env.GOOGLE_CLIENT_ID!,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }),
-      ]
-    : [],
-  session: { strategy: "jwt" },
-  callbacks: {
-    async session({ session, token }) {
-      // セッション情報をカスタマイズしたい場合はここに
-      return session;
-    },
-    async signIn({ user, account, profile }) {
-      // 認証OFF時は常に通す
-      if (!isAuthEnabled) return true;
-      return !!user && !!account;
+    ],
+    callbacks: {
+    // ホワイトリストチェック
+    async signIn({ user }: { user: User }) {
+      const allowedEmails = process.env.ALLOWED_EMAILS?.split(",").map((e) => e.trim()) || [];
+      return allowedEmails.includes(user.email ?? "");
     },
   },
-});
+};
 
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
-
-

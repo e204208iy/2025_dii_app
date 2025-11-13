@@ -14,8 +14,10 @@
 project-root/
 ├── app/
 │   ├── api/
-│   │   └── submit/
-│   │       └── route.ts                # ← MongoDBとの通信API（POST/GET）
+│   │   ├── submit/
+│   │   │   └── route.ts                # ← MongoDBとの通信API（POST/GET）
+│   │   └── auth/ [...nextauth]/
+│   │                   └── route.ts
 │   │
 │   ├── survey/
 │   │   ├── page.tsx                    # ← アンケートの最初のページ（開始画面）

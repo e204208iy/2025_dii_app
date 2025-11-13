@@ -1,24 +1,33 @@
 "use client";
+import { useSession, signIn, signOut } from "next-auth/react";
 
-import { signIn } from "next-auth/react";
+export default function SurveyPage() {
+  const { data: session } = useSession();
 
-export default function LoginPage() {
+  if (!session) {
     return (
-        <div style={{ textAlign: "center", marginTop: "4rem" }}>
-            <h1>ログイン</h1>
-            <p>Googleアカウントでサインインしてください</p>
-            <button
-                onClick={() => signIn("google")}
-                style={{
-                background: "#4285F4",
-                color: "white",
-                padding: "10px 20px",
-                borderRadius: "8px",
-                border: "none",
-                }}
-            >
-                Googleでログイン
-            </button>
-        </div>
+      <div className="flex flex-col items-center">
+        <p>ログインしてください</p>
+        <button
+          onClick={() => signIn("google", { callbackUrl: "/survey" })}
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Googleでログイン
+        </button>
+      </div>
     );
+  }
+
+  return (
+    <div className="flex flex-col items-center">
+      <p>こんにちは、{session.user?.name} さん！</p>
+      <button
+        onClick={() => signOut()}
+        className="bg-gray-500 text-white px-4 py-2 rounded"
+      >
+        ログアウト
+      </button>
+    </div>
+  );
 }
+
