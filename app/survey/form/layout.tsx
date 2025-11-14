@@ -4,7 +4,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 export default function FormLayout({ children }: { children: React.ReactNode }) {
-  const methods = useForm({ mode: "onChange" });
+  const methods = useForm({ 
+    mode: "onChange",
+  });
   const router = useRouter();
 
   const onSubmit = async (data: any) => {

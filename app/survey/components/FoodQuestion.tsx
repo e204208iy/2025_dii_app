@@ -21,7 +21,9 @@ export default function FoodQuestion({ food, index }: any) {
 
   return (
     <div className="border-b pb-4 mb-4 border-stone-300">
-      <h2 className="form-title">{food.食品}</h2>
+      <h2 className="form-title">
+        {index + 1}. {food.食品}
+      </h2>
       <div className="flex flex-wrap gap-5 mt-2 text-lg">
         {frequencies.map((freq) => (
           <label key={freq.value} className="mr-3">
