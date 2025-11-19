@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import './styles/survey.css'
+// import './styles/survey.css'
 
 export default function SurveyStartPage() {
   const router = useRouter();
@@ -11,8 +11,8 @@ export default function SurveyStartPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-contain sm:bg-cover bg-center bg-no-repeat bg-cover" style={{ backgroundImage: "url('/img/bg.jpg')", filter: "brightness(1.12)" }}>
+      <div className="bg-white rounded-2xl p-8 w-full max-w-md text-center shadow-xl">
         <h1 className="text-2xl font-bold mb-4">DIIに関するアンケート</h1>
         <p className="text-gray-600 mb-6">
           このアンケートは、日常の食事内容をもとにDII（食事性炎症指数）を推定します。<br />

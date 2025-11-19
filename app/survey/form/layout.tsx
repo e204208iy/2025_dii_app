@@ -2,8 +2,10 @@
 
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useFoodsData } from "../components/loadFoodsData";
 
 export default function FormLayout({ children }: { children: React.ReactNode }) {
+
   const methods = useForm({ 
     mode: "onChange",
   });
@@ -33,10 +35,12 @@ export default function FormLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full">
-        {children}
-      </form>
-    </FormProvider>
+    <div style={{ backgroundImage: "url('/img/bg.jpg')", filter: "brightness(1.2)" }}>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="w-full">
+          {children}
+        </form>
+      </FormProvider>
+    </div>
   );
 }
