@@ -2,7 +2,6 @@
 
 import { Controller, useFormContext } from "react-hook-form";
 import RiceOptions from "./RiceOptions";
-// import '../styles/survey.css'
 
 const frequencies = [
   { value: "daily", label: "毎日" },
@@ -14,7 +13,7 @@ const frequencies = [
 ];
 
 export default function FoodQuestion({ food, index }: any) {
-  const { control, watch, formState: { errors } } = useFormContext();
+  const { control, watch, formState: { errors },setValue, getValues } = useFormContext();
   const frequencyName = `foods.${food.食品}.frequency`;
   const intakeName = `foods.${food.食品}.intake`;
   const selected = watch(frequencyName);
@@ -39,6 +38,16 @@ export default function FoodQuestion({ food, index }: any) {
                     value={freq.value}
                     checked={field.value === freq.value}
                     className="hidden peer"
+                    onChange={(e) => {
+                    field.onChange(e); // frequency を更新
+
+                    // intake を frequency に合わせて更新
+                    if (e.target.value === "none") {
+                      setValue(intakeName, ""); // none の場合は空に
+                    } else if (!getValues(intakeName)) {
+                      setValue(intakeName, 1); // それ以外は未入力ならデフォルト 1
+                    }
+                  }}
                   />
                   <div className="w-5 h-5 border-2 border-gray-400 rounded-sm peer-checked:bg-blue-500"></div>
                   <span className="ml-1">{freq.label}</span>
@@ -48,7 +57,7 @@ export default function FoodQuestion({ food, index }: any) {
           </label>
         ))}
       </div>
-            {/* 各質問の下にも個別エラー */}
+      {/* 各質問の下にも個別エラー */}
       {errors[food.食品] && (
         <p className="text-red-500 text-sm mt-1">
           {errors[food.食品]?.message as string}
@@ -80,15 +89,20 @@ export default function FoodQuestion({ food, index }: any) {
                 </button>
 
                 {/* 数値入力 */}
-                <input
-                  {...field}
-                  value={field.value ?? 50}
-                  type="number"
-                  step="1"
-                  min="0"
-                  max="100"
-                  className="border px-2 py-1 w-20 text-center"
-                />
+                <div className="relative flex items-center">
+                  <input
+                    {...field}
+                    type="number"
+                    step="1"
+                    min="1"
+                    max="10"
+                    className="border px-2 py-1 w-30 text-center"
+                  />
+                <span className="absolute right-2 text-gray-700 text-sm pointer-events-none">
+                  {food.単位}
+                </span>
+
+                </div>
 
                 {/* プラスボタン */}
                 <button
@@ -109,9 +123,12 @@ export default function FoodQuestion({ food, index }: any) {
         </div>
       )}
 
-      {food.食品.includes("ワイン") && food.食品.includes("カクテル") && (
+      {/* {food.食品.includes("ワイン") && food.食品.includes("カクテル") && (
         <RiceOptions name={`foods.${food.食品}.rice`} />
-      )}
+      )} */}
+      {food.食品.includes("ワイン") || food.食品.includes("カクテル") ? (
+        <RiceOptions name={`foods.${food.食品}.rice`} />
+      ) : null}
     </div>
   );
 }

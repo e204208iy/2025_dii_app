@@ -1,14 +1,44 @@
 "use client";
 
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useFoodsData } from "../components/loadFoodsData";
 
 export default function FormLayout({ children }: { children: React.ReactNode }) {
 
+  const { foodsData, loading } = useFoodsData();
+
   const methods = useForm({ 
     mode: "onChange",
+    defaultValues: {
+      foods: {}
+    }
   });
+
+  // JSON 読み込み後に defaultValues をセット
+  useEffect(() => {
+    if (!loading && foodsData) {
+      const defaults: any = { foods: {} };
+
+      const allFoods = [
+        ...foodsData.foodsOne,
+        ...foodsData.foodsTwo,
+        ...foodsData.foodsThree,
+        ...foodsData.foodsFour,
+        ...foodsData.foodsFive,
+      ];
+
+      allFoods.forEach((food: any) => {
+        defaults.foods[food.食品] = {
+          frequency: "none",
+          intake:  0  // ← 初期値
+        };
+      });
+
+      methods.reset(defaults);  // ★ここで 1 回だけ初期化！
+    }
+  }, [foodsData, loading]);
   const router = useRouter();
 
   const onSubmit = async (data: any) => {

@@ -57,6 +57,13 @@ project-root/
 ```
 
 ## MongoDB Atlsの無料枠に関する考察
+
+### mongoDBへの接続設定
+
+- maxPoolSize: 5,
+- serverSelectionTimeoutMS: 5000,
+- socketTimeoutMS: 45000,
+
 ### jsonデータを２件入れた段階でのデータ(show dbs)
 - admin 100.00 KiB
 - config 108.00 KiB

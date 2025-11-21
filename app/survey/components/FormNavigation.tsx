@@ -28,9 +28,9 @@ export default function FormNavigation({ step }: { step: number }) {
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-2">
       {/* ボタン群 */}
-      <div className="flex justify-between mt-6">
+      <div className="flex justify-between mt-2 gap-x-10">
         {step > 1 && (
           <button
             type="button"

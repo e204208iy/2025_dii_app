@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { useRouter, useParams } from "next/navigation";
 import { useFoodsData } from "../../components/loadFoodsData";
@@ -11,33 +10,8 @@ export default function StepForm() {
   const { step } = useParams();
   const { foodsData, loading } = useFoodsData();
   const { control } = useFormContext();  // ← これでOK
-  const { reset } = useFormContext();
   const router = useRouter();
-
-  // ⭐ 初期値をセット（frequency = "none", intake = ""）
-  useEffect(() => {
-    if (!loading && foodsData) {
-      const defaults: any = { foods: {} };
-
-      const allFoods = [
-        ...foodsData.foodsOne,
-        ...foodsData.foodsTwo,
-        ...foodsData.foodsThree,
-        ...foodsData.foodsFour,
-        ...foodsData.foodsFive,
-      ];
-
-      allFoods.forEach((food: any) => {
-        defaults.foods[food.食品] = {
-          frequency: "none",
-          intake: "",
-        };
-      });
-
-      reset(defaults); // ← ここで初期化完了！
-    }
-  }, [foodsData, loading, reset]);
-
+  
   //プログレスバー
   const currentStep = Number(step);
   const totalSteps = 5;
